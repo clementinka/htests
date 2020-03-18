@@ -1,0 +1,403 @@
+TEST CASES:
+
+PRECONDITIONS:
+
+1. Open Chrome browser
+2. Open page url http://publicdemo.hideez.com/
+
+ID:      001
+Summary: LoginTest (Valid test)
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Enter valid Login into Login field       (param: "admin@hidez.com", "Admin@hideez.com", "ADMIN@HIDEEZ.COM")
+4. Enter valid Password into Password Field (param: "admin")
+5. Click on Button "LogIn"
+6. Check that Dashboard page was loaded
+7. Check current url (dashboard Page)
+8. Check current title (dashboard page)
+
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+login success
+Page url dashboard page ("/")
+Title dashboard page ("Dashboard - HES")
+
+ID:      002
+
+NegativeLoginTest (Invalid test)
+
+Summary: emptyData
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Enter empty data Login into Login field ("")
+4. Enter empty data Password into Password Field ("")
+5. Click on Button "LogIn"
+6. Check current url (login Page)
+7. Check Title page
+8. Check error messages
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+Page title ("Log in - HES")
+login failed
+ErrorMessageText:"The Password field is required."
+ErrorMessageText:"The Email field is required."
+ErrorMessageText:"The Password field is required." (over fields)
+ErrorMessageText:"The Email field is required."    (over fields)
+
+ID:      003
+Summary: emptyDataWithoutEnterData
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Click on Button "LogIn"
+4. Check page title
+4. Check current url (login Page)
+5. Check error messages
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+Page title ("Log in - HES")
+login failed
+ErrorMessageText:"The Password field is required."
+ErrorMessageText:"The Email field is required."
+ErrorMessageText:"The Password field is required." (over fields)
+ErrorMessageText:"The Email field is required."    (over fields)
+
+ID:      004
+
+Summary: invalidLoginValidPass
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Enter Login into Login field ("11admin@hideez.com")
+4. Enter Password into Password Field ("admin")
+5. Click on Button "LogIn"
+6. Check current url (login Page)
+7. Check Title page
+8. Check error messages
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+Page title ("Log in - HES")
+login failed
+ErrorMessageText:"Invalid login attempt."
+
+ID:      005
+Summary: invalidLoginInvalidPass
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Enter Login into Login field ("admin@hideez.ua")
+4. Enter Password into Password Field ("000000")
+5. Click on Button "LogIn"
+6. Check current url (login Page)
+7. Check Title page
+8. Check error messages
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+Page title ("Log in - HES")
+login failed
+ErrorMessageText:"Invalid login attempt."
+
+
+ID:      006
+
+Summary: validLoginInvalidPass
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Enter data Login into Login field ("admin@hideez.com")
+4. Enter Password into Password Field ("a22222")
+5. Click on Button "LogIn"
+6. Check current url (login Page)
+7. Check Title page
+8. Check error messages
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+Page title ("Log in - HES")
+login failed
+ErrorMessageText:"Invalid login attempt."
+
+
+ID:      007
+
+Summary: notValidLoginValidPass
+
+Description:
+
+1. Check current url (login Page)
+2. Check that login page is loaded
+3. Enter Login into Login field ("adminhideez.com")
+4. Enter Password into Password Field ("admin")
+5. Click on Button "LogIn"
+6. Check current url (login Page)
+7. Check Title page
+8. Check error messages
+
+Actual result:
+
+Page url login page ("/Identity/Account/Login?ReturnUrl=%2F")
+Page title ("Log in - HES")
+login unsuccess
+ErrorMessageText:"The Email field is not a valid e-mail address."
+ErrorMessageText:"The Email field is not a valid e-mail ad
+dress." (over fields)
+
+ID:      008
+
+EmployeesTest
+
+Summary: addEmployee
+
+Description:
+
+1. FillingLoginFormAndSubmitIt
+2. Check current url (Dashboard Page)
+3. Click On Menu Employees
+4. Check current url (Employees Page)
+5. Click On Create Employee Button
+
+Start Wizard
+6. Enter First Name InTo Input Field ("Bob")
+7. Enter Last Name InTo Input Field ("Brown")
+8. Enter Email InTo Input Field ("brown@gmail.com");
+9. Enter Phone InTo Input Field ("+38-095-520-69-96");
+10. Click On "Add Company" Button;
+11. Enter Company InTo Input Field ("Hideez");
+12. Click On Create OrgStructure Button;
+13. Click On "Add Department" Button;
+14. Enter Department InTo Input Field ("PR");
+15. Click On "Create OrgStructure" Button;
+16. Click On "Add Position" Button;
+17. Enter Position InTo Input Field ("PRManager");
+18. Click On "Create OrgStructure" Button;
+19. Click On "Next" Button;
+
+Device
+20. Click On Device List;
+21. Click On Device Id;
+22. Click On Proximity Checkbox ("check");
+23. Click On Workstation List;
+24. Click On Workstation;
+25. Click On "Next" Button;
+
+Windows Account
+26. Click On Account Type List;
+27. Select Microsoft Account Type;
+28. Enter Account User Name InTo Input Field ("TestUnlockAccount");
+29. Enter Account User Password InTo Input Field ("123007");
+30. Confirm Account User Password ("123007");
+31. Click On Next Button;
+
+Overview
+32. Check Is Full Name Present;
+33. Check Is Windows Account Present;
+34. Check Is Device Id Present;
+35. Check Is Work station Id Present;
+36. Click On Next Button;
+
+-------END WIZARD-------------------------
+
+Edit Employee
+37. Click On Dropdown Menu Employee;
+38. Click On Edit Employee Link;
+39. Edit First Name ("1Bob");
+40. Edit Last Name ("1Brown");
+41. Edit Email ("1brown@gmail.com");
+42. Edit Phone Number ("+38-095-edited");
+43. Click On Company List;
+44. Click On Company;
+45. Click On Department List;
+46. Click On Department List;
+47. Click On Department;
+48. Click On Position List;
+49. Click On Position;
+50. Click On Save Button;
+
+Delete Personal Account
+51. Click On Dropdown Menu Employee;
+52. Click On Details Link;
+53. Click On Dropdown Menu Account;
+54. Click On Delete Menu Account;
+55. Click On Delete Button;
+
+
+Delete Device
+56. Click On Remove Device Button;
+57. Click On Delete Button;
+
+Delete Employee
+58. Click On Menu Dashboard;
+59. Click On Menu Employees;
+60. Click On Dropdown Menu Employee;
+61. Click On Delete Employee Link;
+62. Click On Delete Button;
+
+Delete Company
+63. Click On Menu Settings;
+64. Click On SubMenu Org Structure;
+65. Click On Dropdown Menu Department;
+66. Click On Delete Menu Department;
+67. Click On Delete Button;
+
+Delete Department
+68. Click On Menu Settings;
+69. Click On SubMenu OrgStructure;
+70. Click On Dropdown Menu Company;
+71. Click On Delete Menu Company;
+72. Click On Delete Button;
+
+Delete Position
+73. Click On Menu Settings;
+74. Click On SubMenu Positions;
+75. Click On Dropdown Menu Position;
+75. Click On Delete Menu Position;
+76. Click On Delete Button;
+
+77. Enter Position In To Search Field ("PRManager");
+78. Check Is Position Is Not Present;
+79. Click On Menu Settings;
+80. Click On Sub Menu OrgStructure;
+81. Check Is Company Is Not Present;
+
+Actual result:
+
+Company created successful
+Department created successful
+Position created successful
+Device added successful
+Personal Windows account added successful
+Employee created successful
+Personal Windows account deleted successful
+Device deleted successful
+Position deleted successful
+Department deleted successful
+Company deleted successful
+Employee deleted successful
+
+ID:      009
+
+OrgStructureTest
+
+Preconditions:
+
+1. FillingLoginFormAndSubmitIt
+2. Check current url (Dashboard Page)
+3. Click On Menu Settings
+4. Click On SubMenu OrgStructure
+5. Check that OrgStructure page is loaded
+6. Check current url
+
+Summary: CompanyTest
+
+Description:
+1. Click "Create Company" button
+2. Enter Company Name
+3. Click "Create" button
+4. Check that company was created
+5. Click on dropdown menu of the created Company
+6. Click on "Edit" link on the dropdown menu
+7. Enter new Company Name
+8. Click "Save" button
+9.
+Click on dropdown menu of the edited Company
+10. Click on "Delete" link on the dropdown menu
+11. Click "Delete" button
+12. Check that company was deleted
+
+Actual result:
+
+Company created successful
+Company edited successful
+Company deleted successful
+
+ID:      010
+
+Summary: DepartmentTest
+
+Description:
+1. Click "Create Department" button
+2. Select Company
+3. Enter Department Name
+4. Click "Create" button
+4. Check that Department was created
+5. Click on dropdown menu of the created Department
+6. Click on "Edit" link on the dropdown menu
+7. Select another Department in the Company list
+8. Enter new Department Name
+9. Click "Save" button
+10. Click on dropdown menu of the edited Department
+10. Click on "Delete" link on the dropdown menu
+11. Click "Delete" button
+12. Check that Department was deleted
+
+Actual result:
+
+Department created successful
+Department edited successful
+Department deleted successful
+
+ID:      011
+
+PositionsTest
+
+Preconditions:
+
+1. FillingLoginFormAndSubmitIt
+2. Check current url (Dashboard Page)
+3. Click On Menu Settings
+4. Click On SubMenu Positions
+5. Check that Positions page is loaded
+6. Check current url
+
+Summary: PositionsTest
+
+Description:
+1. Click "Create Position" button
+2. Enter Position Name
+3. Click "Create" button
+4. Check that company was created
+5. Click on dropdown menu of the created Position
+6. Click on "Edit" link on the dropdown menu
+7. Enter new Position Name
+8. Click "Save" button
+9. Click on dropdown menu of the edited Position
+10. Click on "Delete" link on the dropdown menu
+11. Click "Delete" button
+12. Check that Position was deleted
+
+Actual result:
+
+Position created successful
+Position edited successful
+Position deleted successful
+
+
+POSTCONDITIONS:
+
+Logout
+close browser
